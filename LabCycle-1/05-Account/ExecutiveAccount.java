@@ -4,6 +4,11 @@ import java.util.Scanner;
 public class ExecutiveAccount {
     static ArrayList<Account> accounts = new ArrayList<>() ;
 
+
+    public static void accountNotFound(int accountNo){
+        System.out.println("Account with no.: "+ accountNo +" doesn't exist.");
+    }
+
     public static void addAccount(Account account){
        accounts.add(account);
        System.out.println("New account created with Id: "+ account.getId());
@@ -17,7 +22,7 @@ public class ExecutiveAccount {
                 return;
             }
         }
-        System.out.println("Account with no.: "+ accountNo +" doesn't exist.");
+        accountNotFound(accountNo);
     }
 
     public static void getAccountsDetails(){
@@ -37,7 +42,7 @@ public class ExecutiveAccount {
                 return;
             }
         }
-        System.out.println("Account with no.: "+ accountNo +" doesn't exist.");
+        accountNotFound(accountNo);
     }
 
     public static void withdrawAmountFromAccount(int accountNo,double amount){
@@ -47,7 +52,7 @@ public class ExecutiveAccount {
                 return;
             }
         }
-        System.out.println("Account with no.: "+ accountNo +" doesn't exist.");
+        accountNotFound(accountNo);
     }
 
     public static void main(String[] args) {
