@@ -1,10 +1,81 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class ExecutiveAccount {
+    static ArrayList<Account> accounts = new ArrayList<>() ;
+
+    public static void addAccount(Account account){
+       accounts.add(account);
+       System.out.println("New account created with Id: "+ account.getId());
+    }
+    
+    public static void removeAccount(int accountNo ){
+        for(Account account:accounts){
+            if(account.getId()==accountNo){
+                accounts.remove(account);
+                System.out.println("Account deleted.");
+                return;
+            }
+        }
+        System.out.println("Account with no.: "+ accountNo +" doesn't exist.");
+    }
+
+    public static void getAccountsDetails(){
+        if(accounts.size()==0){
+            System.out.println("No accounts exist.");
+            return;
+        }
+        for(Account account:accounts){
+            account.getAccountDetails();
+        }
+    }
+
+    public static void depositAmountToAccount(int accountNo,double amount){
+        for(Account account:accounts){
+            if(account.getId()==accountNo){
+                account.depositAmount(amount);
+                return;
+            }
+        }
+        System.out.println("Account with no.: "+ accountNo +" doesn't exist.");
+    }
+
+    public static void withdrawAmountFromAccount(int accountNo,double amount){
+        for(Account account:accounts){
+            if(account.getId()==accountNo){
+                account.withdrawAmount(amount);
+                return;
+            }
+        }
+        System.out.println("Account with no.: "+ accountNo +" doesn't exist.");
+    }
+
     public static void main(String[] args) {
-        Account[] accounts = new Account[5];
-        accounts[0]=new Account(1, "A7", "Student");
-        accounts[1]=new Account(2, "P21", "Priest");
-        accounts[2]=new Account(3, "N16", "Model");
-        accounts[3]=new Account(4, "M17", "Celebrity");
-        accounts[4]=new Account(5, "B9", "Teacher");
+        int option;
+        Scanner scanner = new Scanner(System.in);
+        do{
+        System.out.println("\n0.exit\n1.Add account\n2.Remove account\n3.Deposit amount to certain account\n4.Withdraw amount to certain account\n5.Get account details\nEnter your option");
+        option = scanner.nextInt();
+        
+            switch(option){
+                case 0:break;
+                case 1: System.out.println("Enter the depositor name and account type:");
+                        Account account = new Account(scanner.nextLine(),scanner.nextLine());
+                        addAccount(account);
+                        break;
+                case 2: System.out.println("Enter the id of the account you want to delete:");
+                        removeAccount(scanner.nextInt());
+                        break;
+                case 3: System.out.println("Enter the id of the account and the amount to be deposited:");
+                        depositAmountToAccount(scanner.nextInt(), scanner.nextDouble());
+                        break;
+                case 4: System.out.println("Enter the id of the account and the amount to be withdrawn:");
+                        withdrawAmountFromAccount(scanner.nextInt(), scanner.nextDouble());
+                        break;
+                case 5: getAccountsDetails();
+                        break;
+                default:System.out.println("Enter proper option");
+            }
+        }while(option!=0);
     }
 }
