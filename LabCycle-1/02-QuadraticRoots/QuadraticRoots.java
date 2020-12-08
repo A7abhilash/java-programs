@@ -1,5 +1,5 @@
-//WAP to find the roots of a quadratic equation;
 import java.util.Scanner;
+
 public class QuadraticRoots{
     public static void main(String[] args) {
         float a,b,c,discriminant,root1,root2;
