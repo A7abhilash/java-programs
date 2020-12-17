@@ -1,5 +1,3 @@
-//WAP to print pyramid shape using * symbols
-
 import java.util.Scanner;
 
 public class PrintPyramid {

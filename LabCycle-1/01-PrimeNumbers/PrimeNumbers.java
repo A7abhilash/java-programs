@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class PrimeNumbers{
     static boolean isPrime(int num){
+        if(num==1) return false;
         for(int j=2;j<=(int)Math.sqrt(num);j++){
             if(num % j==0){
                 return false;

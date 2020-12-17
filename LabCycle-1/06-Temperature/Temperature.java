@@ -5,7 +5,7 @@ public class Temperature {
         float temp[][]=new float[3][3];
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Enter the temperature data:");
+        System.out.println("Enter the temperature data for 3 cities:");
         for(int i=0;i<3;i++){
             System.out.println("City "+ (i+1) +":");
             for(int j=0;j<2;j++){
